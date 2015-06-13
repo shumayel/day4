@@ -1,6 +1,4 @@
-# Person class created, name will be used in children classes (Studen, Instructor).
-
-class Person
+class Parent
     attr_accessor :name
 
     def initialize(name)
@@ -8,45 +6,43 @@ class Person
     end
 
     def greeting
-        "Hi my name is #{name}."
+        "Hi my name is #{name}!"
     end
 end
 
-# Student class created, child of Person. Defined learn method to puts "I get it!"
-
-class Student < Person
-
-    def initialize(name)
-        super
-    end
-
-    def learn
-        "I get it!"
-    end
-end
-
-# Instructor class, created a teach method that puts "Everything in ruby is an object."
-
-class Instructor < Person
-
-    def initialize(name)
-        super
-    end
+class Instructor < Parent
 
     def teach
-        puts "Everything in Ruby is an Object."
+            puts "Everything in Ruby is an Object."
     end
+
+end
+
+class Student < Parent
+
+    def learn
+            puts "I get it!"
+    end
+
 end
 
 
-cristina = Student.new("Cristina")
-chris = Instructor.new("Chris")
-
-puts chris.greeting
-puts cristina.greeting
-
-puts cristina.learn
-puts chris.teach
-
-#Teach will not work on Cristina because her Object is Student, and that Object lacks the "teach" behaviour.
-#Teach will not work on Chris because her Object is Instructor, and that Object lacks the "learn" behaviour.
+teacher = Instructor.new("Chris")
+protege = Student.new("Cristina")
+puts ""
+puts "Teacher Introduction:"
+puts "-------------------------"
+puts teacher.greeting
+puts ""
+puts "Student Introduction:"
+puts "-------------------------"
+puts protege.greeting
+puts ""
+puts ""
+puts "Lesson 1:"
+puts "-------------------------"
+teacher.teach
+puts ""
+puts "Student Comment/Question:"
+puts "-------------------------"
+protege.learn
